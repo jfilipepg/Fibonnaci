@@ -5,8 +5,23 @@
 // número informado pertence ou não a sequência.
 
 using System.Globalization;
-int numero;
+int numero, acumulador, ultimoTermo;
 
 Console.Write ("Informe o número desejado para saber se ele pertence à sequência de fibonacci: ");
 numero = Convert.ToInt32 (Console.ReadLine ());
 
+if (numero == 0 || numero == 1){
+    Console.Write ("{0} pertence à sequência de fibonacci ", numero);
+}
+else {
+    for (acumulador = 2, ultimoTermo = 1; acumulador < numero;){
+        acumulador += ultimoTermo;
+        ultimoTermo = acumulador - ultimoTermo;
+    }
+    if (numero == acumulador){
+        Console.Write ("{0} pertence à sequência de fibonacci ", numero);
+    }
+    else {
+        Console.Write ("{0} não pertence à sequência de fibonacci ", numero);
+    }
+}
